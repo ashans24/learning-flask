@@ -1,1 +1,1 @@
-web: gunivorn routes:app
+web: gunicorn routes:app
