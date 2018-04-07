@@ -6,7 +6,6 @@ Flask==0.12.2
 Flask-SQLAlchemy==2.3.2
 Flask-WTF==0.14.2
 future==0.16.0
-geocode==0.1.0
 geocoder==1.38.1
 gunicorn==19.7.1
 idna==2.6
