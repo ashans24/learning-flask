@@ -56,7 +56,8 @@ class Place(object):
 		g.close()
 
 		data = json.loads(results)
-
+		print(data)
+		
 		places = []
 		for place in data['query']['geosearch']:
 			name = place['title']
