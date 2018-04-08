@@ -49,6 +49,7 @@ class Place(object):
 
 	def query(self, address):
 		lat, lng = self.address_to_latlng(address)
+		print(lat + "," + lng)
 
 		query_url = 'https://en.wikipedia.org/w/api.php?action=query&list=geosearch&gsradius=5000&gscoord={0}%7C{1}&gslimit=20&format=json'.format(lat, lng)
 		g = urlopen(query_url)
@@ -57,7 +58,7 @@ class Place(object):
 
 		data = json.loads(results)
 		print(data)
-		
+
 		places = []
 		for place in data['query']['geosearch']:
 			name = place['title']
