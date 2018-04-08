@@ -1,17 +1,16 @@
 from flask import Flask, render_template, request, session, redirect, url_for
+from flask.ext.heroku import Heroku
 from models import db, User, Place
 from forms import SignupForm, LoginForm, AddressForm
 
 app = Flask(__name__)
+heroku = Heroku(app)
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI']  = 'postgresql://ashans:Powermate_24@localhost/learningflask'
+#app.config['SQLALCHEMY_DATABASE_URI']  = 'postgresql://ashans:Powermate_24@localhost/learningflask' #postgresql-deep-25326
 
 with app.app_context():
 	db.init_app(app)
-
-	db.create_all()
-	db.session.commit()
 
 app.secret_key = "development-key"
 
