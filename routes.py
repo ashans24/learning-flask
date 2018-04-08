@@ -24,6 +24,7 @@ def about():
 
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
+
 	if 'email' in session:
 		return redirect(url_for('home'))
 
@@ -55,7 +56,7 @@ def home():
 
 	if request.method == 'POST':
 		if form.validate() == False:
-			return render_template('home.html', form=form)
+			return render_template('home.html', form=form, my_coordinates=my_coordinates, places=places)
 		else:
 			# get the address 
 			address = form.address.data
@@ -88,6 +89,7 @@ def login():
 			password = form.password.data
 
 			user = User.query.filter_by(email=email).first()
+
 			if user is not None and user.check_password(password):
 				session['email'] = form.email.data
 				return redirect(url_for('home'))
