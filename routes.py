@@ -66,6 +66,8 @@ def home():
 			my_coordinates = p.address_to_latlng(address)
 			places = p.query(address)
 
+			if places is None:
+				render_template(url_for('home.html'))
 			# return those results
 			return render_template('home.html', form=form, my_coordinates=my_coordinates, places=places)
 

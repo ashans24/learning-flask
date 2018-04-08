@@ -8,12 +8,16 @@
 
 			<div class="section-tabs">
 				<div class="places">
-				{% for place in places %}
-					<article>
-						<a class="name" href="{{ place['url'] }}" target="_blank">{{ place['name'] }}</a>
-						<p class="walking-distance">{{ place['time'] }} min away</p>
-					</article>
-				{% endfor %}
+				{% if places is not None %}
+					{% for place in places %}
+						<article>
+							<a class="name" href="{{ place['url'] }}" target="_blank">{{ place['name'] }}</a>
+							<p class="walking-distance">{{ place['time'] }} min away</p>
+						</article>
+					{% endfor %}
+				{% else %}
+					<p class="error-message">Error when getting latitude and longitude</p>
+				{% endif %}
 				</div>
 			</div>
 
