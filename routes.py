@@ -6,10 +6,12 @@ app = Flask(__name__)
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI']  = 'postgresql://ashans:Powermate_24@localhost/learningflask'
-db.init_app(app)
 
-db.create_all()
-db.session.commit()
+with app.app_context():
+	db.init_app(app)
+
+	db.create_all()
+	db.session.commit()
 
 app.secret_key = "development-key"
 
